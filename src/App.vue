@@ -55,9 +55,9 @@ export default {
         {name: "Mohammed Yazidi", city: "Inezgane", url: "./assets/imageReal/stud1.jpg"},
         {name: "Fatima Alaoui", city: "Agadir", url: "./assets/imageReal/stud2.jpg"},
         {name: "Salah Samadi", city: "Agadir", url: "./assets/imageReal/stud3.jpg"},
-        {name: "karim Mailal", city: "Tiznit", url: "./assets/imageReal/stud4.jpg"},
+        {name: "karima Mailal", city: "Tiznit", url: "./assets/imageReal/stud4.jpg"},
         {name: "Walid Karim", city: "Dcheira", url: "./assets/imageReal/stud5.jpg"},
-        {name: "Imran Ait Baha", city: "Al farah", url: "./assets/imageReal/stud6.jpg"},
+        {name: "Safaa Ait Baha", city: "Al farah", url: "./assets/imageReal/stud6.jpg"},
         {name: "Omar Nouri", city: "Tarast", url: "./assets/imageReal/stud7.jpg"},
         {name: "Youssef Amrani", city: "Lamzar", url: "./assets/imageReal/stud8.jpg"}
       ],
