@@ -7,7 +7,7 @@
     </nav>
         <div class="sidebar">
         <div class="sidebar-title"><i class="fas fa-clock"></i> Waiting List</div>
-        <div class="box" v-for="info in usersData" :key="info.cin">
+        <div class="box" v-for="info in parentData" :key="info.cin">
           <div v-if="info.waitingState" class="users">
               <i class="fas fa-user"></i>
               <h4>{{ info.name }}</h4>
@@ -25,7 +25,7 @@
         <div class="main-box student">
             <img src="./assets/child2.png" alt="image-student" id="child-image">
             <h2 class="heading-name" id="child-name">John doe</h2>
-            <h3 class="heading-work" id="child-city">address</h3>
+            <h3 class="heading-work" id="child-city">Address</h3>
         </div>
     </div>
     <div class="valider">
@@ -41,6 +41,17 @@ export default {
   name: 'App',
   data(){
       return{
+      parentData: [
+        {cin: "jb567894", name: "Hassan Yazidi", city: "Inezgane", url: "./assets/imageReal/imagepro1.jpg", waitingState: true},
+        {cin: "jb458992", name: "Yassine Alaoui", city: "Agadir", url: "./assets/imageReal/imagepro3.png", waitingState: true},
+        {cin: "jb908765", name: "Khaled Samadi", city: "Ait Melloul", url: "./assets/imageReal/imagepro4.png", waitingState: true}
+
+      ],
+      childrenData: [
+        {name: "Mohammed Yazidi", city: "Inezgane", url: "./assets/imageReal/stud1.jpg"},
+        {name: "Fatima Alaoui", city: "Agadir", url: "./assets/imageReal/stud2.jpg"},
+        {name: "Salah Samadi", city: "Ait Melloul", url: "./assets/imageReal/stud3.jpg"}
+      ],
       usersData: [],
       infosChildren: [],
       i: 0
@@ -65,20 +76,19 @@ export default {
       const childImage = document.getElementById("child-image")
       const childName = document.getElementById("child-name")
       const childCity = document.getElementById("child-city")
-      if(this.i === this.usersData.length){
+      if(this.i === this.parentData.length){
         btn.style.background = "crimson"
         btn.style.cursor = "not-allowed"
         return
       }
-      parentImage.src = require(`${this.usersData[this.i].url}`)
-      parentName.innerHTML = `${this.usersData[this.i].name}`
-      parentCity.innerHTML = `${this.usersData[this.i].city}`
-      childImage.src = require(`${this.infosChildren[this.i].url}`)
-      childName.innerHTML = `${this.infosChildren[this.i].name}`
-      childCity.innerHTML = `${this.infosChildren[this.i].city}`
-      this.usersData[this.i].waitingState = false
+      parentImage.src = require(`${this.parentData[this.i].url}`)
+      parentName.innerHTML = `${this.parentData[this.i].name}`
+      parentCity.innerHTML = `${this.parentData[this.i].city}`
+      childImage.src = require(`${this.childrenData[this.i].url}`)
+      childName.innerHTML = `${this.childrenData[this.i].name}`
+      childCity.innerHTML = `${this.childrenData[this.i].city}`
+      this.parentData[this.i].waitingState = false
       this.i = this.i + 1
-      // console.log(this.usersData[0].name)
   }
 
   }
@@ -90,9 +100,7 @@ export default {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  /* text-align: center; */
   color: #2c3e50;
-  /* margin-top: 60px; */
   margin: 0px;
   padding: 0px;
   box-sizing: border-box;
@@ -101,11 +109,8 @@ export default {
   position: absolute;
   bottom: 0px;
   left: 50%;
-  /* transform: translateX(-10%); */
   margin: 20px auto;
   text-align: center;
-  /* background: #81909e; */
-  /* width: 100%; */
 }
 .valider button{
   width: 150px;
@@ -130,7 +135,6 @@ nav {
     top: 0;
     left: 0;
     width: 100%;
-    /* background: linear-gradient(to right, #5f2c82, #49a09d); */
     background-color: #EEE;
     border-bottom: 3px solid rgba(192, 192, 192,1);
 }
@@ -150,8 +154,6 @@ nav h3 {
   height: 552px;
   top: 73px;
   left: 0;
-  /* border-radius: 0px 15px 0 0; */
-  /* background-image: linear-gradient(rgba(192, 192, 192, 1), gray); */
   background-color: white;
   overflow-y: scroll;
 }
@@ -201,13 +203,6 @@ nav h3 {
     text-align: center;
     padding: 20px 0;
 }
-/* .container .main-box:last-child .big-circle {
-  border: 10px solid rgba(187, 98, 235, 0.8);
-
-}
-.container .main-box:last-child .small-circle {
-    border: 10px solid #f1e6ee;
-} */
 .container .main-box:last-child .heading-work {
     color: #A600FF;
     font-weight: 500;
@@ -222,28 +217,6 @@ nav h3 {
 .container .main-box:last-child img{
   border: 5px solid rgba(187, 98, 235, 0.8);
 }
-/* .big-circle {
-    width: 150px;
-    height: 150px;
-    border: 10px solid #46E097;
-    border-radius: 50%;
-    margin: auto;
-    position: relative;
-} */
-/* .small-circle {
-    width: 140px;
-    height: 140px;
-    border: 10px solid #DAF9F6;
-    border-radius: 50%;
-    position: absolute;
-    top: -5px;
-    left: -5px;
-    background-image: url("./assets/imagepro1.jpg");
-    background-position: center;
-    background-size: cover;
-    overflow: hidden;
-    transition: linear 0.3s;
-} */
 
 .heading-name {
  margin: 10px 0;   
