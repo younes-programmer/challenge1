@@ -44,13 +44,22 @@ export default {
       parentData: [
         {cin: "jb567894", name: "Hassan Yazidi", city: "Inezgane", url: "./assets/imageReal/imagepro1.jpg", waitingState: true},
         {cin: "jb458992", name: "Yassine Alaoui", city: "Agadir", url: "./assets/imageReal/imagepro3.png", waitingState: true},
-        {cin: "jb908765", name: "Khaled Samadi", city: "Ait Melloul", url: "./assets/imageReal/imagepro4.png", waitingState: true}
-
+        {cin: "jb908765", name: "Khaled Samadi", city: "Agadir", url: "./assets/imageReal/imagepro4.png", waitingState: true},
+        {cin: "jb908764", name: "Said Mailal", city: "Tiznit", url: "./assets/imageReal/imagepro5.jpg", waitingState: true},
+        {cin: "jb908763", name: "Ahmed Karim", city: "Dcheira", url: "./assets/imageReal/imagepro6.jpg", waitingState: true},
+        {cin: "jb908762", name: "Ali Ait Baha", city: "Al farah", url: "./assets/imageReal/imagepro7.jpg", waitingState: true},
+        {cin: "jb918765", name: "Samir Nouri", city: "Tarast", url: "./assets/imageReal/imagepro8.jpg", waitingState: true},
+        {cin: "jb928765", name: "Kamal Amrani", city: "Lamzar", url: "./assets/imageReal/imagepro9.jpg", waitingState: true}
       ],
       childrenData: [
         {name: "Mohammed Yazidi", city: "Inezgane", url: "./assets/imageReal/stud1.jpg"},
         {name: "Fatima Alaoui", city: "Agadir", url: "./assets/imageReal/stud2.jpg"},
-        {name: "Salah Samadi", city: "Ait Melloul", url: "./assets/imageReal/stud3.jpg"}
+        {name: "Salah Samadi", city: "Agadir", url: "./assets/imageReal/stud3.jpg"},
+        {name: "karim Mailal", city: "Tiznit", url: "./assets/imageReal/stud4.jpg"},
+        {name: "Walid Karim", city: "Dcheira", url: "./assets/imageReal/stud5.jpg"},
+        {name: "Imran Ait Baha", city: "Al farah", url: "./assets/imageReal/stud6.jpg"},
+        {name: "Omar Nouri", city: "Tarast", url: "./assets/imageReal/stud7.jpg"},
+        {name: "Youssef Amrani", city: "Lamzar", url: "./assets/imageReal/stud8.jpg"}
       ],
       usersData: [],
       infosChildren: [],
