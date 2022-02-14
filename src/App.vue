@@ -9,7 +9,7 @@
         <div class="sidebar-title"><i class="fas fa-clock"></i> Waiting List</div>
         <div class="box" v-for="info in parentData" :key="info.cin">
           <div v-if="info.waitingState" class="users">
-              <i class="fas fa-user"></i>
+              <!-- <i class="fas fa-user"></i> -->
               <h4>{{ info.name }}</h4>
           </div>
         </div>
@@ -68,7 +68,7 @@ export default {
   },
   async created(){
     try{
-      const res = await axios.get("http://localhost:3000/teachers");
+      const res = await axios.get("http://localhost:3000/parents");
       const secondeRes = await axios.get("http://localhost:3000/students")
       this.usersData = res.data;
       this.infosChildren = secondeRes.data
