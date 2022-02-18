@@ -7,8 +7,8 @@
     </nav>
         <div class="sidebar">
         <div class="sidebar-title"><i class="fas fa-clock"></i> Waiting List</div>
-        <div class="box" v-for="info in parentData" :key="info.cin">
-          <div v-if="info.waitingState" class="users">
+        <div class="box" v-for="info in infosParents" :key="info.cin">
+          <div class="users">
               <!-- <i class="fas fa-user"></i> -->
               <h4>{{ info.name }}</h4>
           </div>
@@ -29,48 +29,34 @@
         </div>
     </div>
     <div class="valider">
-      <button @click="handleData" id="btn">Valider</button>
+      <!-- <button @click="handleData" id="btn">Valider</button> -->
     </div>
 </template>
 
 <script>
 import Vue from 'vue'
 import axios from 'axios'
-import VueAxios from 'vue-axios'
+// import VueAxios from 'vue-axios'
 export default {
   name: 'App',
   data(){
       return{
-      parentData: [
-        {cin: "jb567894", name: "Hassan Yazidi", city: "Inezgane", url: "./assets/imageReal/imagepro1.jpg", waitingState: true},
-        {cin: "jb458992", name: "Yassine Alaoui", city: "Agadir", url: "./assets/imageReal/imagepro3.png", waitingState: true},
-        {cin: "jb908765", name: "Khaled Samadi", city: "Agadir", url: "./assets/imageReal/imagepro4.png", waitingState: true},
-        {cin: "jb908764", name: "Said Mailal", city: "Tiznit", url: "./assets/imageReal/imagepro5.jpg", waitingState: true},
-        {cin: "jb908763", name: "Ahmed Karim", city: "Dcheira", url: "./assets/imageReal/imagepro6.jpg", waitingState: true},
-        {cin: "jb908762", name: "Ali Ait Baha", city: "Al farah", url: "./assets/imageReal/imagepro7.jpg", waitingState: true},
-        {cin: "jb918765", name: "Samir Nouri", city: "Tarast", url: "./assets/imageReal/imagepro8.jpg", waitingState: true},
-        {cin: "jb928765", name: "Kamal Amrani", city: "Lamzar", url: "./assets/imageReal/imagepro9.jpg", waitingState: true}
-      ],
-      childrenData: [
-        {name: "Mohammed Yazidi", city: "Inezgane", url: "./assets/imageReal/stud1.jpg"},
-        {name: "Fatima Alaoui", city: "Agadir", url: "./assets/imageReal/stud2.jpg"},
-        {name: "Salah Samadi", city: "Agadir", url: "./assets/imageReal/stud3.jpg"},
-        {name: "karima Mailal", city: "Tiznit", url: "./assets/imageReal/stud4.jpg"},
-        {name: "Walid Karim", city: "Dcheira", url: "./assets/imageReal/stud5.jpg"},
-        {name: "Safaa Ait Baha", city: "Al farah", url: "./assets/imageReal/stud6.jpg"},
-        {name: "Omar Nouri", city: "Tarast", url: "./assets/imageReal/stud7.jpg"},
-        {name: "Youssef Amrani", city: "Lamzar", url: "./assets/imageReal/stud8.jpg"}
-      ],
-      usersData: [],
+      infosParents: [],
       infosChildren: [],
       i: 0
     }
   },
+  mounted(){
+    setInterval(() => {
+      this.handleData()
+    }, 2000)
+  }
+  ,
   async created(){
     try{
       const res = await axios.get("http://localhost:3000/parents");
       const secondeRes = await axios.get("http://localhost:3000/students")
-      this.usersData = res.data;
+      this.infosParents = res.data;
       this.infosChildren = secondeRes.data
     }catch(err){
       console.log(err);
@@ -85,18 +71,19 @@ export default {
       const childImage = document.getElementById("child-image")
       const childName = document.getElementById("child-name")
       const childCity = document.getElementById("child-city")
-      if(this.i === this.parentData.length){
-        btn.style.background = "crimson"
-        btn.style.cursor = "not-allowed"
+      if(this.i === this.infosParents.length){
+        // btn.style.background = "crimson"
+        // btn.style.cursor = "not-allowed"
+        this.i = 0
         return
       }
-      parentImage.src = require(`${this.parentData[this.i].url}`)
-      parentName.innerHTML = `${this.parentData[this.i].name}`
-      parentCity.innerHTML = `${this.parentData[this.i].city}`
-      childImage.src = require(`${this.childrenData[this.i].url}`)
-      childName.innerHTML = `${this.childrenData[this.i].name}`
-      childCity.innerHTML = `${this.childrenData[this.i].city}`
-      this.parentData[this.i].waitingState = false
+      parentImage.src = require(`${this.infosParents[this.i].url}`)
+      parentName.innerHTML = `${this.infosParents[this.i].name}`
+      parentCity.innerHTML = `${this.infosParents[this.i].city}`
+      childImage.src = require(`${this.infosChildren[this.i].url}`)
+      childName.innerHTML = `${this.infosChildren[this.i].name}`
+      childCity.innerHTML = `${this.infosChildren[this.i].city}`
+      this.infosParents[this.i].waitingState = false
       this.i = this.i + 1
   }
 
@@ -160,7 +147,7 @@ nav h3 {
 .sidebar {
   position: absolute;
   width: 18%;
-  height: 552px;
+  height: 720px;
   top: 73px;
   left: 0;
   background-color: white;
@@ -168,7 +155,7 @@ nav h3 {
 }
 .sidebar .sidebar-title {
   width: 100%;
-  height: 10%;
+  min-height: 10%;
   color: #46e097;
   display: flex;
   justify-content: center;
